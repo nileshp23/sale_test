@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_position_form" model="ir.ui.view">
+            <field name="name">stock.transfer.npt.form</field>
+            <field name="model">stock.transfer.npt</field>
+            <field name="arch" type="xml">
+                <form string="Consignment transfer">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="sender_id"/>
+                            </group>
+                            <group>
+                                <field name="receiver_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                        <page string="Transfer Order Lines" name="transfer_order_lines">
+                            <field name="order_line">
+                                <tree string="Transfer Order Lines" editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="product_uom_qty"/>
+                                </tree>
+                            </field>
+                        </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+    </record>
+
+    <record id="view_account_position_tree" model="ir.ui.view">
+            <field name="name">stock.transfer.npt.tree</field>
+            <field name="model">stock.transfer.npt</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="sender_id"/>
+                    <field name="receiver_id"/>
+                </tree>
+            </field>
+    </record>
+
+    <record id="action_transfer_stock" model="ir.actions.act_window">
+            <field name="name">stock.transfer.npt</field>
+            <field name="res_model">stock.transfer.npt</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new record
+              </p>
+            </field>
+        </record>
+
+    <menuitem id="sale_order_transfer_inherit_menu"
+                name="Transfer"
+                />
+
+    <menuitem id="menu_transfer_stock"
+            name="Transer Stock"
+            action="action_transfer_stock"
+            parent="sale_order_transfer_inherit_menu"
+            sequence="1"/>
+</odoo>
