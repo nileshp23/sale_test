@@ -10,6 +10,7 @@
     """,
     'category': 'Sale',
     'depends' : ['sale'],
+    'author':'Nilesh Parmar'
     'data': [
         'security/ir.model.access.csv',
         'views/sale_inherit_view.xml',
