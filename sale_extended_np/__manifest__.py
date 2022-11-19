@@ -8,6 +8,7 @@
     'description': """
     This module is used for sale.
     """,
+    'author': "Scorpion"
     'category': 'Sale',
     'depends' : ['sale'],
     'data': [
